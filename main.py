@@ -1,10 +1,8 @@
 from statsbombpy import sb
 import mplsoccer as mpl
-from kloppy import metrica
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from tqdm import tqdm
 from matplotlib.colors import ListedColormap, to_hex
 
 CDM_COMPETITION_ID = 43
@@ -118,10 +116,11 @@ def show_pitch_shot(x, y, xg, goal, title):
     p = pitch.scatter(x, y, s=xg*100, c=goal, alpha=0.8, ax=ax)
     ax.set_title(title, fontsize=20)
 
-def show_heatmap(x, y):
+def show_heatmap(x, y, title):
     pitch = mpl.Pitch()
     fig, ax = pitch.draw(figsize=(9, 6))
     k = pitch.kdeplot(x, y, cmap='Reds', fill=True, levels=10, alpha=0.8, ax=ax)
+    ax.set_title(title, fontsize=20)
 
 def display_pitch():
     plt.show()
@@ -148,6 +147,14 @@ def shot_analysis_without_penalty(events, team):
     goal = ["red" if g == "Goal" else 'black' for g in shots['shot_outcome'].to_list()]
     title = f"Shot without Penalties : {team}"
     show_pitch_shot(x, y, xg, goal, title)
+
+def heatmaps(events, team):
+    arg_events = events[~pd.isna(events['location']) &
+                    (events['team'] == team)]
+    x, y = np.array(arg_events['location'].tolist()).T
+    title = f"Heatmap : {team}"
+    show_heatmap(x, y, title)
+
 
 
 
@@ -195,6 +202,10 @@ def main():
 
                 shot_analysis_without_penalty(event, info["home_team"])
                 shot_analysis_without_penalty(event, info["away_team"])
+
+                heatmaps(event, info["home_team"])
+                heatmaps(event, info["away_team"])
+                
                 print("\nClose all the windows to search a new match !\n")
                 display_pitch()
                 
