@@ -46,10 +46,17 @@ cd data_worldcup2022
 After selecting a match, you will see options for choosing players from the home and away teams. Based on your selection, the tool will generate visualizations:
 
 - Pass Map: Shows the passing patterns of a selected player.
-
+![LionelMessi](https://github.com/user-attachments/assets/4bf32352-de66-4bb6-a5d6-c8acf4919646)
+![KylianMbappe](https://github.com/user-attachments/assets/aab95c3e-a040-4a77-b4b3-93fcd901b7df)
 
 - Shot Map (excluding penalties): Displays all the shots taken by a team.
+![ShotsArgentina](https://github.com/user-attachments/assets/7a39fa3b-14f8-4419-a732-505afd0d2222)
+![ShotsFrance](https://github.com/user-attachments/assets/ba3a9e9e-50b9-42f9-a905-df180ca6bbd8)
+
 - Heatmap: Illustrates the concentration of player movements during the match, visualized through a heatmap.
+![ArgentinaHeatMap](https://github.com/user-attachments/assets/7a6e9496-6a23-4472-a0e1-5ad21c28ea68)
+![FranceHeatMap](https://github.com/user-attachments/assets/c4129c13-b826-4039-99ad-47a8fe5da9c7)
+
 
 ### Available Stages
 - Group Stage
